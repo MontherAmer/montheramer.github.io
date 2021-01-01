@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCurentLocation, getDailyForecast } from './store/actions';
 
 import NavBar from './components/Navbar';
+import Container from './components/Container';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const App = () => {
   return (
     <div className='App'>
       <NavBar />
+      <Container />
     </div>
   );
 };

@@ -30,7 +30,7 @@ export const getCurentLocation = () => async dispatch => {
 
 /* ----------------------------get foercast weather-------------------------- */
 export const getDailyForecast = ({ latitude, longitude }) => async dispatch => {
-  let { data } = await Axios.get(`${process.env.REACT_APP_WEATHER_MAIN_URL}/daily?lat=${latitude}&lon=${longitude}&cnt=7&units=metric`, {
+  let { data } = await Axios.get(`${process.env.REACT_APP_WEATHER_MAIN_URL}/daily?lat=${latitude}&lon=${longitude}&cnt=7`, {
     headers: {
       'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_KEY
     }
