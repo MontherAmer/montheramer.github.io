@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
 
-import testState from './test';
+import locationState from './_location';
 
-export default combineReducers({ testState });
+export default combineReducers({ locationState });
