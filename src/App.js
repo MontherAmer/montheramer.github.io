@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getCurentLocation, getDailyForecast } from './store/actions';
 
+import NavBar from './components/Navbar';
+
 const App = () => {
   const dispatch = useDispatch();
   const { curentLocation } = useSelector(state => state.locationState);
@@ -11,7 +13,11 @@ const App = () => {
     if (!curentLocation.latitude) await dispatch(getCurentLocation());
     dispatch(getDailyForecast(curentLocation));
   }, [curentLocation]);
-  return <div className='App'>aaagain</div>;
+  return (
+    <div className='App'>
+      <NavBar />
+    </div>
+  );
 };
 
 export default App;
