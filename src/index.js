@@ -6,8 +6,8 @@ import configureStore from './store';
 import dotenv from 'dotenv';
 import './index.css';
 import App from './App';
-
 dotenv.config();
+
 export const { store, persistor } = configureStore();
 
 const render = Component => {
