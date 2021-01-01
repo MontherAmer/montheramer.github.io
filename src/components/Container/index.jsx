@@ -1,6 +1,10 @@
 import React from 'react';
 
 import './index.css';
+
+const data1 = [1, 2, 3];
+const data2 = [1, 2, 3];
+
 export default () => {
   return (
     <div className='container'>
