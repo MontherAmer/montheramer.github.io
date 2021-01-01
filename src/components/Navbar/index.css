@@ -5,6 +5,10 @@ nav {
   padding: 0px 24px;
   background-color: #404e67;
   height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 nav > h1 {
@@ -29,7 +33,6 @@ nav > h1 {
   border: 2px solid #bfc1c8;
   align-items: flex-start;
   color: #bfc1c8;
-  box-sizing: border-box;
 }
 
 .dropdown-item {
@@ -37,7 +40,6 @@ nav > h1 {
   cursor: pointer;
   padding: 2px 16px;
   width: 96px;
-  box-sizing: border-box;
 }
 
 .dropdown-item:hover {
