@@ -1,5 +1,6 @@
 import Axios from 'axios';
 import actionTypes from '../actions_types';
+import { getDayMonth, getDayName, convertMeterperSecToKmPerHour, convertTimeStampToReadableTime } from '../../utils';
 
 // * default value of current location if the user does not allow locaion is Greenwich
 const defaultLocation = { type: actionTypes.UPDATE_CURENT_LOCATION, payload: { latitude: 51.477928, longitude: -0.001545 } };
@@ -30,11 +31,30 @@ export const getCurentLocation = () => async dispatch => {
 
 /* ----------------------------get foercast weather-------------------------- */
 export const getDailyForecast = ({ latitude, longitude }) => async dispatch => {
-  let { data } = await Axios.get(`${process.env.REACT_APP_WEATHER_MAIN_URL}/daily?lat=${latitude}&lon=${longitude}&cnt=7`, {
+  let { data } = await Axios.get(`${process.env.REACT_APP_WEATHER_MAIN_URL}/daily?lat=${latitude}&lon=${longitude}&cnt=7&units=metric`, {
     headers: {
       'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_KEY
     }
   });
-
-  if (data) dispatch({ type: actionTypes.UPDATE_MAIN_WEATHER_DATA, payload: data });
+  if (data) {
+    let list = data.list.map((item, i) =>
+      i === 0
+        ? {
+            day: getDayName(i),
+            date: getDayMonth(i),
+            city: data.city.name,
+            dayTemp: Math.round(item.temp.day),
+            nightTemp: Math.round(item.temp.night),
+            speed: convertMeterperSecToKmPerHour(item.speed),
+            sunRise: convertTimeStampToReadableTime(item.sunrise),
+            sunSet: convertTimeStampToReadableTime(item.sunset)
+          }
+        : {
+            day: getDayName(i),
+            dayTemp: Math.round(item.temp.day),
+            nightTemp: Math.round(item.temp.night)
+          }
+    );
+    dispatch({ type: actionTypes.UPDATE_MAIN_WEATHER_DATA, payload: list });
+  }
 };
