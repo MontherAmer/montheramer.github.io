@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import actionTypes from '../actions_types';
-import { getDayMonth, getDayName, convertMeterperSecToKmPerHour, convertTimeStampToReadableTime } from '../../utils';
+import { getDayMonth, getDayName, convertMeterperSecToKmPerHour, convertTimeStampToReadableTime, getIcon } from '../../utils';
 
 // * default value of current location if the user does not allow locaion is Greenwich
 const defaultLocation = { type: actionTypes.UPDATE_CURENT_LOCATION, payload: { latitude: 51.477928, longitude: -0.001545 } };
@@ -47,12 +47,14 @@ export const getDailyForecast = ({ latitude, longitude }) => async dispatch => {
             nightTemp: Math.round(item.temp.night),
             speed: convertMeterperSecToKmPerHour(item.speed),
             sunRise: convertTimeStampToReadableTime(item.sunrise),
-            sunSet: convertTimeStampToReadableTime(item.sunset)
+            sunSet: convertTimeStampToReadableTime(item.sunset),
+            icon: getIcon(item.weather[0].id)
           }
         : {
             day: getDayName(i),
             dayTemp: Math.round(item.temp.day),
-            nightTemp: Math.round(item.temp.night)
+            nightTemp: Math.round(item.temp.night),
+            icon: getIcon(item.weather[0].id)
           }
     );
     dispatch({ type: actionTypes.UPDATE_MAIN_WEATHER_DATA, payload: list });

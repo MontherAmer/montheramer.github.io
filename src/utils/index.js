@@ -29,3 +29,9 @@ export const getDayMonth = i => {
   result.setDate(result.getDate() + i);
   return `${result.getDate()} ${months[result.getMonth()]}`;
 };
+
+export const getIcon = data => {
+  let icon = Math.floor(data / 100);
+  let result = data === 800 ? 'clear' : `icon${icon}`;
+  return result;
+};
