@@ -8,8 +8,7 @@ import Container from './components/Container';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { curentLocation } = useSelector(state => state.locationState);
-
+  const { curentLocation } = useSelector(state => state);
   useEffect(async () => {
     if (!curentLocation.latitude) await dispatch(getCurentLocation());
     dispatch(getDailyForecast(curentLocation));

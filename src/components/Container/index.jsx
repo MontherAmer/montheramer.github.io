@@ -1,11 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import './index.css';
-
 const data1 = [1, 2, 3];
 const data2 = [1, 2, 3];
-
 export default () => {
+  // const {} = useSelector(state=>state.)
   return (
     <div className='container'>
       {/* first column in container */}
