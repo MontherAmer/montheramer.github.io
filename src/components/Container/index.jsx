@@ -1,37 +1,28 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+import Image from '../Image';
+import MainCol from './MainCol';
+import Col from './Col';
+
 import './index.css';
-const data1 = [1, 2, 3];
-const data2 = [1, 2, 3];
 export default () => {
-  // const {} = useSelector(state=>state.)
+  const data = useSelector(state => state.mainWeather);
+  console.log('data ', data);
   return (
     <div className='container'>
       {/* first column in container */}
-      <div className='col-1nd'>
-        <div className='container-item'>
-          <div className='container-item-header'>
-            <p>hello</p>
-            <p>hello</p>
-          </div>
-          <div className='container-item-body'>body</div>
-        </div>
+      <div className='container-section'>
+        <MainCol data={data[0]} />
       </div>
-      <div className='col-2nd'>
-        {data1.map(item => (
-          <div className='container-item'>
-            <div className='container-item-header'>header</div>
-            <div className='container-item-body'>body</div>
-          </div>
+      <div className='container-section'>
+        {data.slice(1, 4).map((item, i) => (
+          <Col data={item} key={i} index={i} />
         ))}
       </div>
-      <div className='col-3nd'>
-        {data2.map(d => (
-          <div className='container-item'>
-            <div className='container-item-header'>header</div>
-            <div className='container-item-body'>body</div>
-          </div>
+      <div className='container-section'>
+        {data.slice(4, 7).map((item, i) => (
+          <Col data={item} key={i} index={i + 1} />
         ))}
       </div>
     </div>

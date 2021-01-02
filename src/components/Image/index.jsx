@@ -11,10 +11,10 @@ import sunrise from '../../assets/sunrise.svg';
 import sunset from '../../assets/sunset.svg';
 import wind from '../../assets/wind.png';
 
-export default ({ value, width }) => {
+export default ({ value, width, classess }) => {
   const images = { icon2, icon3, icon5, icon6, icon7, icon8, clear, sunrise, sunset, wind };
 
   const ImageName = images[value];
 
-  return <img src={ImageName} alt={value} style={{ width: `${width}px` }} className='image-container' />;
+  return <img src={ImageName} alt={value} style={{ width: `${width}px` }} className={classess ? classess : ''} />;
 };

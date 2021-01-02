@@ -4,38 +4,39 @@ body {
   color: #bfc1c8;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
-  font-weight: 300;
-  line-height: 1.5;
+  font-weight: 500;
   background: #1e202b;
   height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 #root,
 .App {
   height: 100%;
-  overflow: hidden;
 }
 
 .App {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding-top: 75px;
+  overflow-x: hidden;
 }
 
-* {
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+body * {
+  margin: 0;
   box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
-  html,
-  body,
-  #root,
-  .App {
-    overflow-y: auto;
-  }
   .App {
     align-items: flex-start;
+  }
+  .wrapper {
+    padding-top: 0;
   }
 }

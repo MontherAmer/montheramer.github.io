@@ -1,0 +1,51 @@
+.column-first {
+  width: 420px;
+  height: 100%;
+}
+
+.column-first .column-header {
+  justify-content: space-between;
+}
+
+.column-footer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.column-footer-item {
+  display: flex;
+  align-items: center;
+  margin-right: 24px;
+}
+
+.city-name {
+  font-size: 18px;
+}
+
+.day-temp {
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: 900;
+}
+
+.main-day-temp {
+  font-size: 90px;
+  color: #ffffff;
+  font-weight: 900;
+}
+
+.night-temp {
+  font-size: 40px;
+}
+
+@media (max-width: 1024px) {
+  .column-first {
+    width: 720px;
+  }
+}
+
+@media (max-width: 425px) {
+  .column-first {
+    width: 360px;
+  }
+}
