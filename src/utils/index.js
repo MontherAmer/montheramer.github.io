@@ -1,4 +1,4 @@
-const weekDays = ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 /* ------------------------convert from m/s to Km/h-------------------------- */
 export const convertMeterperSecToKmPerHour = number => {
@@ -21,7 +21,12 @@ export const convertTimeStampToReadableTime = data => {
   return time;
 };
 
-export const getDayName = num => weekDays[num - new Date().getDay() + 6];
+export const getDayName = i => {
+  let date = new Date();
+  var result = new Date(date);
+  result.setDate(result.getDate() + i);
+  return `${weekDays[result.getDay()]}`;
+};
 
 export const getDayMonth = i => {
   let date = new Date();
