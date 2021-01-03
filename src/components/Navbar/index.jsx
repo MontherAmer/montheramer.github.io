@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+
 import menuIcon from '../../assets/menu.svg';
+
 import Modal from '../Modal';
+import Map from '../Map';
 
 import './index.css';
 export default () => {
@@ -9,6 +12,8 @@ export default () => {
   const toggleMenu = e => setState({ ...state, showMenu: !state.showMenu });
 
   const toggleModal = e => setState({ ...state, showModal: !state.showModal });
+
+  const handlePosition = latLng => console.log('EEEEEEEE ', latLng);
 
   return (
     <nav>
@@ -27,7 +32,7 @@ export default () => {
       </div>
       {state.showModal ? (
         <Modal show={state.showModal} hide={toggleModal}>
-          <h1>sldfjlsadfjl</h1>
+          <Map handlePosition={handlePosition} />
         </Modal>
       ) : null}
     </nav>
