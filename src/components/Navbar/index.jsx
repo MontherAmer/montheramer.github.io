@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { getDailyForecast, toggleLoader } from '../../store/actions';
 
 import menuIcon from '../../assets/menu.svg';
 
@@ -7,13 +10,16 @@ import Map from '../Map';
 
 import './index.css';
 export default () => {
+  const dispatch = useDispatch();
   const [state, setState] = useState({});
 
   const toggleMenu = e => setState({ ...state, showMenu: !state.showMenu });
 
   const toggleModal = e => setState({ ...state, showModal: !state.showModal });
 
-  const handlePosition = latLng => console.log('EEEEEEEE ', latLng);
+  const handlePosition = async latLng => (
+    dispatch(toggleLoader()), await dispatch(getDailyForecast({ latitude: latLng[0], longitude: latLng[1] })), dispatch(toggleLoader())
+  );
 
   return (
     <nav>

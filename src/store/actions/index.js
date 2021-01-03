@@ -60,3 +60,5 @@ export const getDailyForecast = ({ latitude, longitude }) => async dispatch => {
     dispatch({ type: actionTypes.UPDATE_MAIN_WEATHER_DATA, payload: list });
   }
 };
+
+export const toggleLoader = () => dispatch => dispatch({ type: actionTypes.TOGGLE_LOADER });

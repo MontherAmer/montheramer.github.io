@@ -5,10 +5,11 @@ import { getCurentLocation, getDailyForecast } from './store/actions';
 
 import NavBar from './components/Navbar';
 import Container from './components/Container';
+import Loader from './components/Loader';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { curentLocation } = useSelector(state => state);
+  const { curentLocation, showLoader } = useSelector(state => state);
   useEffect(async () => {
     if (!curentLocation.latitude) await dispatch(getCurentLocation());
     dispatch(getDailyForecast(curentLocation));
@@ -19,6 +20,7 @@ const App = () => {
       <div className='wrapper'>
         <Container />
       </div>
+      {showLoader ? <Loader /> : null}
     </div>
   );
 };
