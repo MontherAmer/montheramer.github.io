@@ -1,0 +1,51 @@
+.modal {
+  position: fixed;
+  top: 60px;
+  left: 0px;
+  display: none;
+  background-color: #1e202b;
+  border: 5px double #ffffff;
+  width: 100%;
+  height: calc(100% - 60px);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.modal.show {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 30px;
+  animation: slide 1s cubic-bezier(0.68, 0, 0.63, 0.62);
+}
+
+.modal.hide {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 30px;
+  animation: slide 9s cubic-bezier(0.68, 0, 0.63, 0.62) reverse;
+}
+
+.modal-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.modal-body {
+  width: 100%;
+  background-color: transparent;
+  height: 100%;
+  overflow-y: auto;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

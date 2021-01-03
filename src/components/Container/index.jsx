@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import Image from '../Image';
 import MainCol from './MainCol';
 import Col from './Col';
 

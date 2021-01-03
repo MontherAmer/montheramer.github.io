@@ -10,11 +10,12 @@ import clear from '../../assets/icons/clear.svg';
 import sunrise from '../../assets/sunrise.svg';
 import sunset from '../../assets/sunset.svg';
 import wind from '../../assets/wind.png';
+import close from '../../assets/close.svg';
 
-export default ({ value, width, classess }) => {
-  const images = { icon2, icon3, icon5, icon6, icon7, icon8, clear, sunrise, sunset, wind };
+export default ({ value, width, classess, onClick }) => {
+  const images = { icon2, icon3, icon5, icon6, icon7, icon8, clear, sunrise, sunset, wind, close };
 
   const ImageName = images[value];
 
-  return <img src={ImageName} alt={value} style={{ width: `${width}px` }} className={classess ? classess : ''} />;
+  return <img src={ImageName} alt={value} style={{ width: `${width}px` }} className={classess ? classess : ''} onClick={onClick} />;
 };
