@@ -10,6 +10,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  margin: 0px 8px;
 }
 
 .table-header {
@@ -29,7 +30,6 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  /* box-shadow: 0 3px 1px 0px #888; */
   box-shadow: 0 8px 6px -6px#888;
   width: 100px;
   min-height: 140px;
@@ -38,4 +38,17 @@
 
 .table-cell:nth-child(2) {
   margin-top: 15px;
+}
+
+.column-remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.table > h2 {
+  font-family: 'Cookie', cursive;
+  font-size: 40px;
+  font-weight: 500;
 }
