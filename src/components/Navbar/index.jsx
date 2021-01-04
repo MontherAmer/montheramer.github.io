@@ -4,14 +4,18 @@ import menuIcon from '../../assets/menu.svg';
 
 import Modal from '../Modal';
 import OneLocation from '../OneLocation';
+import MultiLocation from '../MultiLocations';
+import Image from '../Image';
 
 import './index.css';
 export default () => {
   const [state, setState] = useState({});
 
-  const toggleMenu = e => setState({ ...state, showMenu: !state.showMenu });
+  const toggleMenu = () => setState({ ...state, showMenu: !state.showMenu });
 
-  const toggleModal = e => setState({ ...state, showModal: !state.showModal });
+  const toggleOneLocation = () => setState({ ...state, showMultiLocation: false, showOneLocation: !state.showOneLocation });
+
+  const toggleMultiLocation = () => setState({ ...state, showOneLocation: false, showMultiLocation: !state.showMultiLocation });
 
   return (
     <nav>
@@ -20,17 +24,26 @@ export default () => {
         <img src={menuIcon} className='nav-icon' onClick={toggleMenu} />
         {state.showMenu ? (
           <div className='dropdown-content' onMouseLeave={toggleMenu}>
-            <p className='dropdown-item' onClick={toggleModal}>
-              Home
-            </p>
-            <p className='dropdown-item'>About</p>
-            <p className='dropdown-item'>Contact</p>
+            <div className='dropdown-item' onClick={toggleOneLocation}>
+              <Image classess='item-image' value='loc' width={20} />
+              <p>One Location</p>
+            </div>
+            <div className='dropdown-item' onClick={toggleMultiLocation}>
+              <Image classess='item-image' value='compare' width={20} />
+              <p> Compare locations</p>
+            </div>
           </div>
         ) : null}
       </div>
-      {state.showModal ? (
-        <Modal show={state.showModal} hide={toggleModal}>
-          <OneLocation hideModal={toggleModal} />
+      {state.showOneLocation ? (
+        <Modal show={state.showOneLocation} hide={toggleOneLocation}>
+          <OneLocation hideModal={toggleOneLocation} />
+        </Modal>
+      ) : null}
+
+      {state.showMultiLocation ? (
+        <Modal show={state.showMultiLocation} hide={toggleMultiLocation}>
+          <MultiLocation hideModal={toggleMultiLocation} />
         </Modal>
       ) : null}
     </nav>
