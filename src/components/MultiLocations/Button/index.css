@@ -1,0 +1,63 @@
+.add-location {
+  position: absolute;
+  left: 15px;
+  bottom: -115px;
+  width: 200px;
+  height: 160px;
+}
+
+.add-button,
+.sun,
+.add-button span {
+  position: absolute;
+}
+
+.add-location:hover .sun {
+  bottom: 140px;
+  transition: all 1s ease-in-out;
+  box-shadow: 0px 0px 10px #ffdc2a;
+}
+
+.add-location:hover .add-button {
+  transition: all 1s ease-in-out;
+  box-shadow: 0px 0px 16px #ffdc2a;
+}
+
+.sun {
+  width: 35px;
+  height: 35px;
+  left: 29px;
+  bottom: 123px;
+  background: linear-gradient(180deg, #ffdc2a 0%, #fb2182 41.54%);
+  box-shadow: 0px 0px 21px #ffdc2a;
+  z-index: 2;
+  border-radius: 65px;
+  transition: all 1s ease-in-out;
+}
+
+.add-button {
+  width: 90px;
+  height: 40px;
+  background: #404e67;
+  border-radius: 2px;
+  z-index: 3;
+  border: 2px solid;
+  transition: all 1s ease-in-out;
+  cursor: pointer;
+  outline: none;
+}
+
+.add-button span {
+  text-align: center;
+  font-family: 'Cookie', cursive;
+  left: 24px;
+  font-size: 24px;
+  line-height: 39px;
+  margin: 0 auto;
+  transition: all 0.3s ease-in-out;
+  background: -webkit-linear-gradient(#ffffff, #eee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+  font-weight: 600;
+}
