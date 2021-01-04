@@ -9,17 +9,25 @@ import Loader from './components/Loader';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { curentLocation, showLoader } = useSelector(state => state);
-  useEffect(async () => {
-    if (!curentLocation.latitude) await dispatch(getCurentLocation());
-    dispatch(getDailyForecast(curentLocation));
-  }, [curentLocation]);
+  const { curentLocation, mainWeather, showLoader } = useSelector(state => state);
+
+  useEffect(() => {
+    const loadContent = async () => {
+      if (!curentLocation.latitude) await dispatch(getCurentLocation());
+      dispatch(getDailyForecast(curentLocation));
+    };
+    loadContent();
+  }, [curentLocation, dispatch]);
+
   return (
     <div className='App'>
       <NavBar />
-      <div className='wrapper'>
-        <Container />
-      </div>
+      {mainWeather.length ? (
+        <div className='wrapper'>
+          <Container />
+        </div>
+      ) : null}
+
       {showLoader ? <Loader /> : null}
     </div>
   );

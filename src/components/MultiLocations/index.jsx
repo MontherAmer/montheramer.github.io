@@ -15,7 +15,6 @@ export default ({ hideModal }) => {
   const toggleMap = () => setState({ ...state, showMap: !state.showMap });
 
   const handleMapClicked = async latLng => {
-    console.log(latLng);
     await dispatch(getMultiForecast({ latitude: latLng[0], longitude: latLng[1] }));
     toggleMap();
   };

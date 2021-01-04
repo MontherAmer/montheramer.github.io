@@ -7,7 +7,6 @@ import Col from './Col';
 import './index.css';
 export default () => {
   const data = useSelector(state => state.mainWeather);
-  console.log('data ', data);
   return (
     <div className='container'>
       {/* first column in container */}

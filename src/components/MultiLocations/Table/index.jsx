@@ -11,7 +11,6 @@ export default () => {
 
   const removeColumn = i => dispatch(removeItemMultiForecast(i));
 
-  console.log('multiLocations ', multiLocations);
   return (
     <div className='table'>
       {multiLocations.length > 1 &&
