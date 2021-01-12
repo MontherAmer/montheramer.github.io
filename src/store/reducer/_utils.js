@@ -1,5 +1,12 @@
 import actionTypes from '../actions_types';
 
-const initialState = {};
+const initialState = {
+  unit: 'metric'
+};
 
-export default (state = initialState, { type, payload }) => {};
+export default (state = initialState, { type, payload }) => {
+  switch (type) {
+    default:
+      return state;
+  }
+};

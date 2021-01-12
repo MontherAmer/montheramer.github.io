@@ -1,22 +1,29 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getCurentLocation, getDailyForecast } from './store/actions';
+import { getDefaltLocation, getForecastData } from './store/actions';
 
 import FloatButtons from './components/FloatsButtons';
+import Loader from './components/Loader';
 import Main from './components/MainWeather';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { curentLocation } = useSelector(state => state);
+  const { weathers } = useSelector(state => state.mainState);
+  const { unit } = useSelector(state => state.utilsState);
 
   useEffect(() => {
     const loadContent = async () => {
-      if (!curentLocation?.latitude) await dispatch(getCurentLocation());
+      let location = await getDefaltLocation();
+      console.log('location', location);
+      dispatch(getForecastData({ unit, ...location }));
+      // if (!curentLocation?.latitude) await dispatch(getDefaltLocation());
       // dispatch(getDailyForecast(curentLocation));
     };
     loadContent();
   }, [dispatch]);
+
+  if (!weathers?.length) return <Loader />;
 
   return (
     <div className='App'>
