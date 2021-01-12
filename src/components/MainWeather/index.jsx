@@ -1,92 +1,68 @@
 import React from 'react';
-
-import clearIcon from '../../assets/icons/clear1.svg';
+import { useSelector } from 'react-redux';
 import windIcon from '../../assets/icons/wind.png';
+
+import Image from '../Image';
 
 import styles from './index.module.css';
 export default () => {
+  const { weathers } = useSelector(state => state.mainState);
+
+  const data = weathers[0];
   return (
     <div className={styles.container}>
-      <div className={styles.section}>
-        <div className={styles.cardBG}>
-          <div className={styles.cardBGHeader}>London</div>
-          <div className={styles.cardBGBody}>
-            <div className={styles.cardBGFirst}>
-              <div className={styles.cardBGRight}>
-                <p>MONDAY</p>
-                <div className={styles.tempContainer}>
-                  <p>25&#8451;</p>
-                  <p>25&#8451;</p>
+      {data?.map((item, i) =>
+        i === 0 ? (
+          <div className={styles.section}>
+            <div className={styles.cardBG}>
+              <div className={styles.cardBGHeader}>{item.city}</div>
+              <div className={styles.cardBGBody}>
+                <div className={styles.cardBGFirst}>
+                  <div className={styles.cardBGRight}>
+                    <p>{item.day.toUpperCase()}</p>
+                    <div className={styles.tempContainer}>
+                      <p>{item.dayTemp}&#8451;</p>
+                      <p>{item.nightTemp}&#8451;</p>
+                    </div>
+                  </div>
+                  <div className={styles.cardBGRight}>
+                    <Image value={item.icon} height='100px' />
+                    {/* <img src={clearIcon} className={styles.icon} /> */}
+                  </div>
+                </div>
+                <div className={styles.cardBGSecond}>
+                  <div className={styles.windSpeed}>
+                    <p>{item.speed}</p>
+                    <img src={windIcon} />
+                  </div>
+                  <h3>{item.time}</h3>
                 </div>
               </div>
-              <div className={styles.cardBGRight}>
-                <img src={clearIcon} className={styles.icon} />
-              </div>
-            </div>
-            <div className={styles.cardBGSecond}>
-              <div className={styles.windSpeed}>
-                <p>15 K/H</p>
-                <img src={windIcon} />
-              </div>
-              <h3>08:30 AM</h3>
             </div>
           </div>
-        </div>
-      </div>
-      <div className={styles.section}>
-        <div className={styles.cardSM}>
-          <h1>WIDNESDAY</h1>
-          <div className={styles.tempContainer}>
-            <h2>25&#8451;</h2>
-            <h3>13&#8451;</h3>
+        ) : i % 2 !== 0 ? (
+          <div className={styles.section}>
+            <div className={styles.cardSM}>
+              <h1>{item.day.toUpperCase()}</h1>
+              <div className={styles.tempContainer}>
+                <h2>{item.dayTemp}&#8451;</h2>
+                <h3>{item.nightTemp}&#8451;</h3>
+              </div>
+              {/* <img src={clearIcon} /> */}
+              <Image value={item.icon} height='40px' />
+            </div>
+            <div className={styles.cardSM}>
+              <h1>{data[i + 1].day.toUpperCase()}</h1>
+              <div className={styles.tempContainer}>
+                <h2>{data[i + 1].dayTemp}&#8451;</h2>
+                <h3>{data[i + 1].nightTemp}&#8451;</h3>
+              </div>
+              {/* <img src={clearIcon} /> */}
+              <Image value={item.icon} height='40px' />
+            </div>
           </div>
-          <img src={clearIcon} />
-        </div>
-        <div className={styles.cardSM}>
-          <h1>WIDNESDAY</h1>
-          <div className={styles.tempContainer}>
-            <h2>25&#8451;</h2>
-            <h3>13&#8451;</h3>
-          </div>
-          <img src={clearIcon} />
-        </div>
-      </div>
-      <div className={styles.section}>
-        <div className={styles.cardSM}>
-          <h1>WIDNESDAY</h1>
-          <div className={styles.tempContainer}>
-            <h2>25&#8451;</h2>
-            <h3>13&#8451;</h3>
-          </div>
-          <img src={clearIcon} />
-        </div>
-        <div className={styles.cardSM}>
-          <h1>WIDNESDAY</h1>
-          <div className={styles.tempContainer}>
-            <h2>25&#8451;</h2>
-            <h3>13&#8451;</h3>
-          </div>
-          <img src={clearIcon} />
-        </div>
-      </div>
-      <div className={styles.section}>
-        <div className={styles.cardSM}>
-          <h1>WIDNESDAY</h1>
-          <div className={styles.tempContainer}>
-            <h2>25&#8451;</h2>
-            <h3>13&#8451;</h3>
-          </div>
-          <img src={clearIcon} />
-        </div>
-        <div className={styles.cardSM}>
-          <h1>WIDNESDAY</h1>
-          <div className={styles.tempContainer}>
-            <h2>25&#8451;</h2>
-            <h3>13&#8451;</h3>
-          </div>
-          <img src={clearIcon} />
-        </div>
-      </div>
+        ) : null
+      )}
     </div>
   );
 };

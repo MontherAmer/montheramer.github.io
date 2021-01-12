@@ -7,7 +7,7 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case actionTypes.ADD_NEW_WEATHER_ITEM:
-      return { ...state, weathers: state.weathers.concat(payload) };
+      return { ...state, weathers: state.weathers.length ? state.weathers.concat(payload) : state.weathers.concat([payload]) };
     default:
       return state;
   }
