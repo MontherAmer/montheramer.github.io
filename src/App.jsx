@@ -3,32 +3,33 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getCurentLocation, getDailyForecast } from './store/actions';
 
-import NavBar from './components/Navbar';
-import Container from './components/Container';
-import Loader from './components/Loader';
+import FloatButtons from './components/FloatsButtons';
+import Main from './components/MainWeather';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { curentLocation, mainWeather, showLoader } = useSelector(state => state);
+  const { curentLocation } = useSelector(state => state);
 
   useEffect(() => {
     const loadContent = async () => {
-      if (!curentLocation.latitude) await dispatch(getCurentLocation());
-      dispatch(getDailyForecast(curentLocation));
+      if (!curentLocation?.latitude) await dispatch(getCurentLocation());
+      // dispatch(getDailyForecast(curentLocation));
     };
     loadContent();
-  }, [curentLocation, dispatch]);
+  }, [dispatch]);
 
   return (
     <div className='App'>
-      <NavBar />
-      {mainWeather.length ? (
-        <div className='wrapper'>
-          <Container />
-        </div>
-      ) : null}
+      <FloatButtons />
+      <Main />
+      {/* <SideBar />
+      <div className='container'>
+        <CardSM />
+        <CardBG />
+        {showMap ? <Map /> : null}
+      </div>
 
-      {showLoader ? <Loader /> : null}
+      {showLoader ? <Loader /> : null} */}
     </div>
   );
 };

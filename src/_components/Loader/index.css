@@ -123,7 +123,7 @@ path {
   }
 }
 .text {
-  font-family: Helvetica, 'Helvetica Neue', sans-serif;
+  /* font-family: Helvetica, 'Helvetica Neue', sans-serif; */
   letter-spacing: 1px;
   text-align: center;
   margin-left: -43px;

@@ -1,11 +1,12 @@
 html,
 body {
   margin: 0;
-  color: #bfc1c8;
-  font-family: 'Roboto', sans-serif;
+  /* color: #bfc1c8; */
+  color: #ffffff;
+  /* font-family: 'Roboto', sans-serif; */
+  font-family: 'Ubuntu', sans-serif;
   font-size: 14px;
   font-weight: 500;
-  background: #1e202b;
   height: 100vh;
   overflow-x: hidden;
 }
@@ -16,8 +17,26 @@ body {
 }
 
 .App {
-  padding-top: 75px;
   overflow-x: hidden;
+  background-color: #1f6482;
+  background-image: linear-gradient(to bottom right, #fefefe, #c7c7c7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 270px);
+  height: 100%;
+}
+
+.t2 {
+  background-color: #3ea6c3;
+  height: 50px;
+  width: 400px;
 }
 
 .wrapper {
@@ -49,9 +68,6 @@ body * {
 }
 
 @media (max-width: 1024px) {
-  .App {
-    align-items: flex-start;
-  }
   .wrapper {
     padding-top: 0;
   }
