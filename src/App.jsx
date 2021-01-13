@@ -6,12 +6,13 @@ import { getDefaltLocation, getForecastData } from './store/actions';
 import FloatButtons from './components/FloatsButtons';
 import Loader from './components/Loader';
 import Main from './components/MainWeather';
+import MultiWeather from './components/MultiWeathers';
 import Modal from './components/Modal';
 
 const App = () => {
   const dispatch = useDispatch();
   const { weathers } = useSelector(state => state.mainState);
-  const { unit, isMapShown } = useSelector(state => state.utilsState);
+  const { unit, isMapShown, isLoading } = useSelector(state => state.utilsState);
 
   useEffect(() => {
     const loadContent = async () => {
@@ -27,8 +28,10 @@ const App = () => {
   return (
     <div className='App'>
       <FloatButtons />
-      {weathers?.length === 1 ? <Main /> : <h1>should render another items</h1>}
 
+      {weathers?.length === 1 ? <Main /> : <MultiWeather weathers={weathers} />}
+
+      {isLoading ? <Loader /> : null}
       {isMapShown ? <Modal show={isMapShown} /> : null}
     </div>
   );

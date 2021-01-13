@@ -6,5 +6,7 @@ export const mainActionsTypes = {
 
 export const utilsActionsTypes = {
   SHOW_MAP: 'SHOW_MAP',
-  HIDE_MAP: 'HIDE_MAP'
+  HIDE_MAP: 'HIDE_MAP',
+  SHOW_LOADER: 'SHOW_LOADER',
+  HIDE_LOADER: 'HIDE_LOADER'
 };

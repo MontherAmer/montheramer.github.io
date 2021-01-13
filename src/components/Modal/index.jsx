@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Map } from 'pigeon-maps';
 
-import { hideMap, getForecastData } from '../../store/actions';
+import { hideMap, showLoader, hideLoader, getForecastData } from '../../store/actions';
 
+import Loader from '../Loader';
 import styles from './index.module.css';
 import closeImg from '../../assets/close.svg';
 
@@ -17,26 +18,32 @@ const mapTilerProvider = (x, y, z, dpr) => {
 export default ({ show }) => {
   const dispatch = useDispatch();
 
-  const [state, setstate] = useState({});
+  const [loader, setLoader] = useState();
 
   const { unit } = useSelector(state => state.utilsState);
 
-  const handleClick = ({ latLng }) => dispatch(getForecastData({ unit, lat: latLng[0], lon: latLng[1] }));
+  const handleClick = async ({ latLng }) => {
+    setLoader(true);
+    await dispatch(getForecastData({ unit, lat: latLng[0], lon: latLng[1] }));
+    dispatch(hideMap());
+  };
 
   const handleHide = () => dispatch(hideMap());
-
   return (
     <div id='modal' className={`${styles.modal} ${show ? styles.show : ''}`}>
       <img src={closeImg} className={styles.modalClose} onClick={handleHide} />
-      <Map
-        defaultZoom={3}
-        minZoom={3}
-        defaultCenter={[32.22111, 35.25444]}
-        provider={mapTilerProvider}
-        dprs={[1, 2]}
-        onClick={handleClick}
-        boxClassname='test123'
-      ></Map>
+      {loader ? (
+        <Loader />
+      ) : (
+        <Map
+          defaultZoom={3}
+          minZoom={3}
+          defaultCenter={[32.22111, 35.25444]}
+          provider={mapTilerProvider}
+          dprs={[1, 2]}
+          onClick={handleClick}
+        ></Map>
+      )}
     </div>
   );
 };

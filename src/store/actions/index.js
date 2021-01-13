@@ -37,7 +37,7 @@ export const getForecastData = ({ unit, lon, lat, name }) => async dispatch => {
     }
   });
   let formatedData = await formateWeatherData({ ...weatherData.data, time: timeData.data.data.time_now });
-
+  console.log('================ ', formatedData);
   return dispatch({ type: mainActionsTypes.ADD_NEW_WEATHER_ITEM, payload: [formatedData] });
 };
 
@@ -45,6 +45,11 @@ export const getForecastData = ({ unit, lon, lat, name }) => async dispatch => {
 export const showMap = () => dispatch => dispatch({ type: utilsActionsTypes.SHOW_MAP });
 
 export const hideMap = () => dispatch => dispatch({ type: utilsActionsTypes.HIDE_MAP });
+
+/* ----------------------------show and hide loader-------------------------- */
+export const showLoader = () => dispatch => dispatch({ type: utilsActionsTypes.SHOW_LOADER });
+
+export const hideLoader = () => dispatch => dispatch({ type: utilsActionsTypes.HIDE_LOADER });
 
 // // * default value of current location if the user does not allow locaion is Greenwich
 // const defaultLocation = { type: mainActionsTypes.UPDATE_CURENT_LOCATION, payload: { latitude: 51.477928, longitude: -0.001545 } };
