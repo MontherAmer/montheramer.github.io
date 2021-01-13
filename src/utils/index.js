@@ -41,36 +41,7 @@ const convertMeterperSecToKmPerHour = number => {
   return result;
 };
 
-// const formationData = data => {
-//   return data.list.map((item, i) =>
-//     i === 0
-//       ? {
-//           day: getDayName(i),
-//           date: getDayMonth(i),
-//           city: data.city.name,
-//           dayTemp: Math.round(item.temp.day),
-//           nightTemp: Math.round(item.temp.night),
-//           speed: convertMeterperSecToKmPerHour(item.speed),
-//           sunRise: convertTimeStampToReadableTime(item.sunrise),
-//           sunSet: convertTimeStampToReadableTime(item.sunset),
-//           icon: getIcon(item.weather[0].id)
-//         }
-//       : {
-//           day: getDayName(i),
-//           dayTemp: Math.round(item.temp.day),
-//           nightTemp: Math.round(item.temp.night),
-//           icon: getIcon(item.weather[0].id)
-//         }
-//   );
-// };
-
 export const formateWeatherData = data => {
-  // let obj = {};
-  // obj.time = readableTime(data.time);
-  // obj.city = data.city.name;
-
-  // console.log(obj);
-
   return data.list.map((item, i) =>
     i === 0
       ? {
@@ -81,8 +52,9 @@ export const formateWeatherData = data => {
           dayTemp: Math.round(item.temp.day),
           nightTemp: Math.round(item.temp.night),
           speed: convertMeterperSecToKmPerHour(item.speed),
-          // sunRise: convertTimeStampToReadableTime(item.sunrise),
-          // sunSet: convertTimeStampToReadableTime(item.sunset),
+          // originalTime: data.time,
+          sunRise: item.sunrise,
+          sunSet: item.sunset,
           icon: getIcon(item.weather[0].id)
         }
       : {

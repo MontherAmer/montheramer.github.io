@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import actionTypes from '../actions_types';
+import { mainActionsTypes, utilsActionsTypes } from '../actions_types';
 import { formateWeatherData } from '../../utils';
 // import { getDayMonth, getDayName, convertMeterperSecToKmPerHour, convertTimeStampToReadableTime, getIcon } from '../../utils';
 
@@ -38,11 +38,16 @@ export const getForecastData = ({ unit, lon, lat, name }) => async dispatch => {
   });
   let formatedData = await formateWeatherData({ ...weatherData.data, time: timeData.data.data.time_now });
 
-  return dispatch({ type: actionTypes.ADD_NEW_WEATHER_ITEM, payload: formatedData });
+  return dispatch({ type: mainActionsTypes.ADD_NEW_WEATHER_ITEM, payload: formatedData });
 };
 
+/* ---------------------------show and hide map------------------------------ */
+export const showMap = () => dispatch => dispatch({ type: utilsActionsTypes.SHOW_MAP });
+
+export const hideMap = () => dispatch => dispatch({ type: utilsActionsTypes.HIDE_MAP });
+
 // // * default value of current location if the user does not allow locaion is Greenwich
-// const defaultLocation = { type: actionTypes.UPDATE_CURENT_LOCATION, payload: { latitude: 51.477928, longitude: -0.001545 } };
+// const defaultLocation = { type: mainActionsTypes.UPDATE_CURENT_LOCATION, payload: { latitude: 51.477928, longitude: -0.001545 } };
 
 /* ----------------------get user curent location---------------------------- */
 // export const getCurentLocation = () => async dispatch => {
@@ -57,7 +62,7 @@ export const getForecastData = ({ unit, lon, lat, name }) => async dispatch => {
 //       // await getTimeAPI(result.coords);
 //       return result.coords
 //         ? dispatch({
-//             type: actionTypes.UPDATE_CURENT_LOCATION,
+//             type: mainActionsTypes.UPDATE_CURENT_LOCATION,
 //             payload: { latitude: result.coords.latitude, longitude: result.coords.longitude }
 //           })
 //         : dispatch(defaultLocation);
@@ -86,7 +91,7 @@ export const getForecastData = ({ unit, lon, lat, name }) => async dispatch => {
 // };
 
 // * default value of current location if the user does not allow locaion is Greenwich
-// const defaultLocation = { type: actionTypes.UPDATE_CURENT_LOCATION, payload: { latitude: 51.477928, longitude: -0.001545 } };
+// const defaultLocation = { type: mainActionsTypes.UPDATE_CURENT_LOCATION, payload: { latitude: 51.477928, longitude: -0.001545 } };
 
 // const formationData = data => {
 //   return data.list.map((item, i) =>
@@ -123,7 +128,7 @@ export const getForecastData = ({ unit, lon, lat, name }) => async dispatch => {
 //       let result = await fetchData();
 //       return result.coords
 //         ? dispatch({
-//             type: actionTypes.UPDATE_CURENT_LOCATION,
+//             type: mainActionsTypes.UPDATE_CURENT_LOCATION,
 //             payload: { latitude: result.coords.latitude, longitude: result.coords.longitude }
 //           })
 //         : dispatch(defaultLocation);
@@ -138,7 +143,7 @@ export const getForecastData = ({ unit, lon, lat, name }) => async dispatch => {
 /* ----------------------------get foercast weather-------------------------- */
 // export const getDailyForecast = ({ latitude, longitude }) => async dispatch => {
 //   try {
-//     dispatch({ type: actionTypes.TOGGLE_LOADER });
+//     dispatch({ type: mainActionsTypes.TOGGLE_LOADER });
 // let { data } = await Axios.get(`${process.env.REACT_APP_WEATHER_MAIN_URL}/daily?lat=${latitude}&lon=${longitude}&cnt=7&units=metric`, {
 //   headers: {
 //     'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_KEY
@@ -147,17 +152,17 @@ export const getForecastData = ({ unit, lon, lat, name }) => async dispatch => {
 
 // //     if (data) {
 // //       let list = formationData(data);
-// //       dispatch({ type: actionTypes.UPDATE_MAIN_WEATHER_DATA, payload: list });
-// //       dispatch({ type: actionTypes.TOGGLE_LOADER });
+// //       dispatch({ type: mainActionsTypes.UPDATE_MAIN_WEATHER_DATA, payload: list });
+// //       dispatch({ type: mainActionsTypes.TOGGLE_LOADER });
 // //     }
 // //   } catch (err) {
-// //     dispatch({ type: actionTypes.TOGGLE_LOADER });
+// //     dispatch({ type: mainActionsTypes.TOGGLE_LOADER });
 // //   }
 // // };
 
 // // export const getMultiForecast = ({ latitude, longitude }) => async dispatch => {
 // //   try {
-// //     dispatch({ type: actionTypes.TOGGLE_LOADER });
+// //     dispatch({ type: mainActionsTypes.TOGGLE_LOADER });
 // //     let { data } = await Axios.get(`${process.env.REACT_APP_WEATHER_MAIN_URL}/daily?lat=${latitude}&lon=${longitude}&cnt=7&units=metric`, {
 // //       headers: {
 // //         'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_KEY
@@ -165,16 +170,16 @@ export const getForecastData = ({ unit, lon, lat, name }) => async dispatch => {
 // //     });
 // //     if (data) {
 // //       let list = formationData(data);
-// //       dispatch({ type: actionTypes.ADD_LOCATION_TO_MULTI_ARRAY, payload: list });
-// //       dispatch({ type: actionTypes.TOGGLE_LOADER });
+// //       dispatch({ type: mainActionsTypes.ADD_LOCATION_TO_MULTI_ARRAY, payload: list });
+// //       dispatch({ type: mainActionsTypes.TOGGLE_LOADER });
 // //     }
 // //   } catch (err) {
-// //     dispatch({ type: actionTypes.TOGGLE_LOADER });
+// //     dispatch({ type: mainActionsTypes.TOGGLE_LOADER });
 // //   }
 // // };
 
 // // export const removeItemMultiForecast = index => dispatch => {
-// //   dispatch({ type: actionTypes.REMOVE_LOCATION_FROM_MULTI_ARRAY, payload: index });
+// //   dispatch({ type: mainActionsTypes.REMOVE_LOCATION_FROM_MULTI_ARRAY, payload: index });
 // // };
 
-// // export const toggleLoader = () => dispatch => dispatch({ type: actionTypes.TOGGLE_LOADER });
+// // export const toggleLoader = () => dispatch => dispatch({ type: mainActionsTypes.TOGGLE_LOADER });

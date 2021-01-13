@@ -13,7 +13,7 @@ export default () => {
     <div className={styles.container}>
       {data?.map((item, i) =>
         i === 0 ? (
-          <div className={styles.section}>
+          <div className={styles.section} key={i}>
             <div className={styles.cardBG}>
               <div className={styles.cardBGHeader}>{item.city}</div>
               <div className={styles.cardBGBody}>
@@ -27,28 +27,26 @@ export default () => {
                   </div>
                   <div className={styles.cardBGRight}>
                     <Image value={item.icon} height='100px' />
-                    {/* <img src={clearIcon} className={styles.icon} /> */}
                   </div>
                 </div>
                 <div className={styles.cardBGSecond}>
                   <div className={styles.windSpeed}>
-                    <p>{item.speed}</p>
+                    <p>{item.speed}</p> &nbsp;
                     <img src={windIcon} />
                   </div>
-                  <h3>{item.time}</h3>
+                  <h3>{item.date}</h3>
                 </div>
               </div>
             </div>
           </div>
         ) : i % 2 !== 0 ? (
-          <div className={styles.section}>
+          <div className={styles.section} key={i}>
             <div className={styles.cardSM}>
               <h1>{item.day.toUpperCase()}</h1>
               <div className={styles.tempContainer}>
                 <h2>{item.dayTemp}&#8451;</h2>
                 <h3>{item.nightTemp}&#8451;</h3>
               </div>
-              {/* <img src={clearIcon} /> */}
               <Image value={item.icon} height='40px' />
             </div>
             <div className={styles.cardSM}>
@@ -57,7 +55,6 @@ export default () => {
                 <h2>{data[i + 1].dayTemp}&#8451;</h2>
                 <h3>{data[i + 1].nightTemp}&#8451;</h3>
               </div>
-              {/* <img src={clearIcon} /> */}
               <Image value={item.icon} height='40px' />
             </div>
           </div>

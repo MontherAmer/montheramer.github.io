@@ -1,21 +1,25 @@
 .modal {
   position: fixed;
-  top: 60px;
-  left: 0px;
+  top: 0;
+  left: 0;
   display: none;
-  background-color: #1e202b;
   border: 5px double #ffffff;
   width: 100%;
-  height: calc(100% - 60px);
+  height: 100%;
   border-radius: 10px;
   padding: 10px;
+  background: -webkit-radial-gradient(white 0px, transparent 1px), -webkit-radial-gradient(white 0px, transparent 1px),
+    -webkit-radial-gradient(white 0px, transparent 1px), #206583;
+  background-position: 5px 5px, 32px 81px;
+  background-size: 50px 50px;
 }
 
 .modal.show {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 30px;
+  align-items: center;
+  padding: 32px;
   animation: slide 1s cubic-bezier(0.68, 0, 0.63, 0.62);
 }
 
@@ -27,18 +31,22 @@
   animation: slide 9s cubic-bezier(0.68, 0, 0.63, 0.62) reverse;
 }
 
-.modal-close {
+.modalClose {
   position: absolute;
   top: 5px;
   right: 5px;
   cursor: pointer;
 }
 
-.modal-body {
+.modalBody {
   width: 100%;
   background-color: transparent;
   height: 100%;
   overflow-y: auto;
+}
+
+.modalInner {
+  border-radius: 5px;
 }
 
 @keyframes slide {
