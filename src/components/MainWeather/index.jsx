@@ -15,7 +15,7 @@ export default () => {
         i === 0 ? (
           <div className={styles.section} key={i}>
             <div className={styles.cardBG}>
-              <div className={styles.cardBGHeader}>{item.city}</div>
+              <div className={styles.cardBGHeader}>{item.city || 'Unknown Place'}</div>
               <div className={styles.cardBGBody}>
                 <div className={styles.cardBGFirst}>
                   <div className={styles.cardBGRight}>

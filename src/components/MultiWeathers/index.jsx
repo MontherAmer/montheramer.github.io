@@ -1,20 +1,30 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+
+import { removeWeatherCol } from '../../store/actions';
 import styles from './index.module.css';
+
 import Image from '../Image';
 import windIcon from '../../assets/icons/wind.png';
 import closeIcon from '../../assets/close.svg';
 
 export default ({ weathers }) => {
+  const dispatch = useDispatch();
+
+  const handleRemove = i => {
+    console.log('ddddddddd ', i);
+    dispatch(removeWeatherCol(i));
+  };
   return (
     <div className={styles.wrapper}>
-      {weathers.map(data => (
-        <div className={styles.container}>
+      {weathers.map((data, j) => (
+        <div className={styles.container} key={j}>
           {data?.map((item, i) =>
             i === 0 ? (
-              <div className={styles.cardBG}>
+              <div className={styles.cardBG} key={i}>
                 <div className={styles.cardBGHeader}>
                   {item.city || 'Unknown Place'}
-                  <img src={closeIcon} className={styles.closeImage} />
+                  <img src={closeIcon} className={styles.closeImage} onClick={() => handleRemove(j)} />
                 </div>
                 <div className={styles.cardBGBody}>
                   <div className={styles.cardBGFirst}>
@@ -39,7 +49,7 @@ export default ({ weathers }) => {
                 </div>
               </div>
             ) : (
-              <div className={styles.cardSM}>
+              <div className={styles.cardSM} key={i}>
                 <h1>{item.day.toUpperCase()}</h1>
                 <div className={styles.tempContainer}>
                   <h2>{item.dayTemp}&#8451;</h2>
