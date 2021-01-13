@@ -27,7 +27,8 @@ const App = () => {
   return (
     <div className='App'>
       <FloatButtons />
-      <Main />
+      {weathers?.length === 1 ? <Main /> : <h1>should render another items</h1>}
+
       {isMapShown ? <Modal show={isMapShown} /> : null}
     </div>
   );

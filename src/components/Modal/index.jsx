@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Map } from 'pigeon-maps';
 
-import { hideMap } from '../../store/actions';
+import { hideMap, getForecastData } from '../../store/actions';
 
 import styles from './index.module.css';
 import closeImg from '../../assets/close.svg';
@@ -16,8 +16,13 @@ const mapTilerProvider = (x, y, z, dpr) => {
 
 export default ({ show }) => {
   const dispatch = useDispatch();
+
   const [state, setstate] = useState({});
-  const handleClick = () => console.log('THIS IS test');
+
+  const { unit } = useSelector(state => state.utilsState);
+
+  const handleClick = ({ latLng }) => dispatch(getForecastData({ unit, lat: latLng[0], lon: latLng[1] }));
+
   const handleHide = () => dispatch(hideMap());
 
   return (

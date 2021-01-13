@@ -38,7 +38,7 @@ export const getForecastData = ({ unit, lon, lat, name }) => async dispatch => {
   });
   let formatedData = await formateWeatherData({ ...weatherData.data, time: timeData.data.data.time_now });
 
-  return dispatch({ type: mainActionsTypes.ADD_NEW_WEATHER_ITEM, payload: formatedData });
+  return dispatch({ type: mainActionsTypes.ADD_NEW_WEATHER_ITEM, payload: [formatedData] });
 };
 
 /* ---------------------------show and hide map------------------------------ */
