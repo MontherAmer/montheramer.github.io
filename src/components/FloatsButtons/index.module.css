@@ -1,14 +1,12 @@
 .floatbuttons {
   position: fixed;
   bottom: 0;
-  /* left: 0; */
   width: 100%;
   height: 100px;
   background-color: transparent;
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
-  /* padding: 0 60px; */
   width: 50%;
   left: 50%;
   transform: translateX(-50%);
@@ -31,7 +29,7 @@
 .floatbuttons .cyrcle:hover {
   border-style: dashed;
 }
-.floatbuttons-image {
+.floatbuttonsImage {
   height: 30px;
 }
 
@@ -49,7 +47,7 @@
   color: white;
 }
 
-.bubble.show-bubble::before {
+.bubble.showBubble::before {
   border: 12.5px solid transparent;
   border-top: 12.5px solid #40a8c2;
   border-bottom: 0;
@@ -65,7 +63,7 @@
   transform: rotate(90deg) skew(-25deg) translateY(16.6666666667px);
 }
 
-.bubble.show-bubble {
+.bubble.showBubble {
   animation: slide-rotate 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
@@ -80,17 +78,14 @@
   }
 }
 
-.bubble.show-bubble.first-buble {
+.bubble.showBubble.firstBuble {
   width: 300px;
   height: 200px;
 }
 
-.bubble.show-bubble.second-buble {
-  width: 700px;
-  height: 500px;
-}
-
-.bubble.show-bubble.third-buble {
-  width: 300px;
-  height: 200px;
+.bubble.showBubble.thirdBuble {
+  width: 194px;
+  height: 118px;
+  padding: 8px;
+  border-radius: 8px;
 }

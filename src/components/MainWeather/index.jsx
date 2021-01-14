@@ -6,8 +6,9 @@ import Image from '../Image';
 
 import styles from './index.module.css';
 export default () => {
-  const { weathers } = useSelector(state => state.mainState);
+  const { weathers, unit } = useSelector(state => state.mainState);
 
+  const deg = unit === 'metric' ? <span>&#8451;</span> : <span>&#8457;</span>;
   const data = weathers[0];
   return (
     <div className={styles.container}>
@@ -21,8 +22,14 @@ export default () => {
                   <div className={styles.cardBGRight}>
                     <p>{item.day.toUpperCase()}</p>
                     <div className={styles.tempContainer}>
-                      <p>{item.dayTemp}&#8451;</p>
-                      <p>{item.nightTemp}&#8451;</p>
+                      <p>
+                        {item.dayTemp}
+                        {deg}
+                      </p>
+                      <p>
+                        {item.nightTemp}
+                        {deg}
+                      </p>
                     </div>
                   </div>
                   <div className={styles.cardBGRight}>
@@ -44,16 +51,28 @@ export default () => {
             <div className={styles.cardSM}>
               <h1>{item.day.toUpperCase()}</h1>
               <div className={styles.tempContainer}>
-                <h2>{item.dayTemp}&#8451;</h2>
-                <h3>{item.nightTemp}&#8451;</h3>
+                <h2>
+                  {item.dayTemp}
+                  {deg}
+                </h2>
+                <h3>
+                  {item.nightTemp}
+                  {deg}
+                </h3>
               </div>
               <Image value={item.icon} height='40px' />
             </div>
             <div className={styles.cardSM}>
               <h1>{data[i + 1].day.toUpperCase()}</h1>
               <div className={styles.tempContainer}>
-                <h2>{data[i + 1].dayTemp}&#8451;</h2>
-                <h3>{data[i + 1].nightTemp}&#8451;</h3>
+                <h2>
+                  {data[i + 1].dayTemp}
+                  {deg}
+                </h2>
+                <h3>
+                  {data[i + 1].nightTemp}
+                  {deg}
+                </h3>
               </div>
               <Image value={item.icon} height='40px' />
             </div>

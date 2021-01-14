@@ -1,37 +1,51 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { showMap } from '../../store/actions';
+import { showMap, updateUnit, getExistingForecastData, updateOnlyOneLocation } from '../../store/actions';
 
 import cityIcon from '../../assets/city-solid.svg';
-import cogIcon from '../../assets/cog-solid.svg';
 import mapIcon from '../../assets/map-marked-solid.svg';
 
-import './index.css';
+import Units from './Units';
+
+import styles from './index.module.css';
 export default () => {
   const dispatch = useDispatch();
+  const { unit, onlyOneLocation, coords } = useSelector(state => state.mainState);
   const [state, setState] = useState({});
 
+  const handleUnits = e => {
+    dispatch(updateUnit(e));
+    // dispatch(getExistingForecastData({ unit, coords }));
+  };
+
   const handleClick = index => {
-    setState({ ...state, show: state.show === index ? 0 : index });
+    setState({ ...state, show: index });
     if (index === 2) dispatch(showMap());
   };
 
+  const handleOnlyOneLocation = e => {
+    dispatch(updateOnlyOneLocation());
+  };
   return (
-    <div className='floatbuttons'>
-      <div className='cyrcle' onClick={() => handleClick(1)}>
-        <img src={cityIcon} className='floatbuttons-image' onClick={() => handleClick(1)} />
-        <div className={`bubble ${state?.show === 1 ? 'show-bubble' : ''} first-buble`}>asdasd</div>
+    <div className={styles.floatbuttons}>
+      <div className={styles.cyrcle} onClick={() => handleClick(1)}>
+        <img src={cityIcon} className={styles.floatbuttonsImage} onClick={() => handleClick(1)} />
+        <div className={`${styles.bubble} ${state?.show === 1 ? styles.showBubble : ''} ${styles.firstBuble}`}>asdasd</div>
       </div>
 
-      <div className='cyrcle' onClick={() => handleClick(2)}>
-        <img src={mapIcon} className='floatbuttons-image' onClick={() => handleClick(2)} />
+      <div className={styles.cyrcle} onClick={() => handleClick(2)}>
+        <img src={mapIcon} className={styles.floatbuttonsImage} onClick={() => handleClick(2)} />
       </div>
 
-      <div className='cyrcle' onClick={() => handleClick(3)}>
-        <img src={cogIcon} className='floatbuttons-image' onClick={() => handleClick(3)} />
-        <div className={`bubble ${state?.show === 3 ? 'show-bubble' : ''} third-buble`}>asdasd</div>
-      </div>
+      <Units
+        handleClick={handleClick}
+        handleUnits={handleUnits}
+        handleOnlyOneLocation={handleOnlyOneLocation}
+        unit={unit}
+        onlyOneLocation={onlyOneLocation}
+        show={state.show}
+      />
     </div>
   );
 };

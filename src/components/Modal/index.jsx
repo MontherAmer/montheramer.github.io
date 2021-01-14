@@ -20,7 +20,7 @@ export default ({ show }) => {
 
   const [loader, setLoader] = useState();
 
-  const { unit } = useSelector(state => state.utilsState);
+  const { unit } = useSelector(state => state.mainState);
 
   const handleClick = async ({ latLng }) => {
     setLoader(true);

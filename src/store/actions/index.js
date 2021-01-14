@@ -40,25 +40,6 @@ export const getForecastData = ({ unit, lon, lat, name }) => async dispatch => {
   return dispatch({ type: mainActionsTypes.ADD_NEW_WEATHER_ITEM, payload: [formatedData] });
 };
 
-export const getExistingForecastData = ({ unit, coords }) => async dispatch => {
-  console.log('unit,dataunit,data ', unit, coords);
-  // let weatherData = await Axios.get(
-  //   `${process.env.REACT_APP_WEATHER_MAIN_URL}/daily?${!name ? 'lat=' + lat + '&lon=' + lon : ''}&cnt=7&units=${unit ? unit : 'metric'}`,
-  //   {
-  //     headers: {
-  //       'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_KEY
-  //     }
-  //   }
-  // );
-  // let timeData = await Axios.get(`${process.env.REACT_APP_RAPIDAPI_TIME_URL}?location=${lat}, ${lon}`, {
-  //   headers: {
-  //     'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_TIME_KEY
-  //   }
-  // });
-  // let formatedData = await formateWeatherData({ ...weatherData.data, time: timeData.data.data.time_now });
-  // return dispatch({ type: mainActionsTypes.ADD_NEW_WEATHER_ITEM, payload: [formatedData] });
-};
-
 /* -------------------------remove weather column---------------------------- */
 export const removeWeatherCol = index => dispatch => dispatch({ type: mainActionsTypes.REMOVE_WEATHER_ITEM, payload: index });
 
@@ -73,9 +54,9 @@ export const showLoader = () => dispatch => dispatch({ type: utilsActionsTypes.S
 export const hideLoader = () => dispatch => dispatch({ type: utilsActionsTypes.HIDE_LOADER });
 
 /* ------------------------------update unit--------------------------------- */
-export const updateUnit = unit => dispatch => dispatch({ type: utilsActionsTypes.UPDATE_UNIT, payload: unit });
+export const updateUnit = unit => dispatch => dispatch({ type: mainActionsTypes.UPDATE_UNIT, payload: unit });
 
-export const updateOnlyOneLocation = () => dispatch => dispatch({ type: utilsActionsTypes.UPDATE_ONLY_ONE_LOCATION });
+export const updateOnlyOneLocation = () => dispatch => dispatch({ type: mainActionsTypes.UPDATE_ONLY_ONE_LOCATION });
 
 // // * default value of current location if the user does not allow locaion is Greenwich
 // const defaultLocation = { type: mainActionsTypes.UPDATE_CURENT_LOCATION, payload: { latitude: 51.477928, longitude: -0.001545 } };

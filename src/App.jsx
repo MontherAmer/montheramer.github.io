@@ -12,15 +12,15 @@ import Modal from './components/Modal';
 const App = () => {
   const dispatch = useDispatch();
   const { weathers } = useSelector(state => state.mainState);
-  const { unit, isMapShown, isLoading } = useSelector(state => state.utilsState);
+  const { unit } = useSelector(state => state.mainState);
+  const { isMapShown, isLoading } = useSelector(state => state.utilsState);
 
   useEffect(() => {
     const loadContent = async () => {
       let location = await getDefaltLocation();
-      console.log('location', location);
       dispatch(getForecastData({ unit, ...location }));
     };
-    loadContent();
+    if (!weathers.length) loadContent();
   }, [dispatch]);
 
   if (!weathers?.length) return <Loader />;
