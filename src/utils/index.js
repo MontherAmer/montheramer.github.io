@@ -52,7 +52,7 @@ export const formateWeatherData = data => {
           dayTemp: Math.round(item.temp.day),
           nightTemp: Math.round(item.temp.night),
           speed: convertMeterperSecToKmPerHour(item.speed),
-          // originalTime: data.time,
+          coord: data.city.coord,
           sunRise: item.sunrise,
           sunSet: item.sunset,
           icon: getIcon(item.weather[0].id)
@@ -64,6 +64,43 @@ export const formateWeatherData = data => {
           icon: getIcon(item.weather[0].id)
         }
   );
+};
+
+/* -----------------------convert weathers units value----------------------- */
+export const updateUnitHelper = (weathers, unit) => {
+  // * mph = km/h ÷ 1.609344
+  const convertFromKmToMile = data => Math.round((data / 1.609344) * 10) / 10;
+  const convertFromMileToKm = data => Math.round(data * 1.609344 * 10) / 10;
+  // * T°F = (T°C *9/5) +32
+  const convertFromCtoF = data => Math.round(((data * 9) / 5 + 32) * 10) / 10;
+  // * T°C = (T°F - 32) × 5/9
+  const convertFromFtoC = data => Math.round((((data - 32) * 5) / 9) * 10) / 10;
+
+  return unit === 'imperial'
+    ? weathers.map(oneWeatherArr =>
+        oneWeatherArr.map((item, i) =>
+          i === 0
+            ? {
+                ...item,
+                dayTemp: convertFromCtoF(item.dayTemp),
+                nightTemp: convertFromCtoF(item.nightTemp),
+                speed: convertFromKmToMile(item.speed)
+              }
+            : { ...item, dayTemp: convertFromCtoF(item.dayTemp), nightTemp: convertFromCtoF(item.nightTemp) }
+        )
+      )
+    : weathers.map(oneWeatherArr =>
+        oneWeatherArr.map((item, i) =>
+          i === 0
+            ? {
+                ...item,
+                dayTemp: convertFromFtoC(item.dayTemp),
+                nightTemp: convertFromFtoC(item.nightTemp),
+                speed: convertFromMileToKm(item.speed)
+              }
+            : { ...item, dayTemp: convertFromFtoC(item.dayTemp), nightTemp: convertFromFtoC(item.nightTemp) }
+        )
+      );
 };
 
 // const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
