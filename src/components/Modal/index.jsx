@@ -20,7 +20,7 @@ export default ({ show }) => {
 
   const [loader, setLoader] = useState();
 
-  const { unit } = useSelector(state => state.mainState);
+  const { unit, themes } = useSelector(state => state.mainState);
 
   const handleClick = async ({ latLng }) => {
     setLoader(true);
@@ -30,7 +30,7 @@ export default ({ show }) => {
 
   const handleHide = () => dispatch(hideMap());
   return (
-    <div id='modal' className={`${styles.modal} ${show ? styles.show : ''}`}>
+    <div id='modal' className={`${styles.modal} ${show ? styles.show : ''} ${themes[0] ? styles.night : ''}`}>
       <img src={closeImg} className={styles.modalClose} onClick={handleHide} />
       {loader ? (
         <Loader />

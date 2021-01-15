@@ -22,11 +22,15 @@
   width: 200px;
   height: 140px;
   background: -webkit-radial-gradient(white 0px, transparent 1px), -webkit-radial-gradient(white 0px, transparent 1px),
-    -webkit-radial-gradient(white 0px, transparent 1px), #206583;
+    -webkit-radial-gradient(white 0px, transparent 1px), #40a8c2;
   background-position: 5px 5px, 32px 81px;
   background-size: 50px 50px;
   border-radius: 8px;
   position: relative;
+}
+
+.cardBG.night {
+  background-color: #206583;
 }
 
 .cardBGHeader {
@@ -115,7 +119,7 @@
 
 .cardSM {
   background: -webkit-radial-gradient(white 0px, transparent 1px), -webkit-radial-gradient(white 0px, transparent 1px),
-    -webkit-radial-gradient(white 0px, transparent 1px), #206583;
+    -webkit-radial-gradient(white 0px, transparent 1px), #40a8c2;
   background-position: 5px 5px, 32px 81px;
   background-size: 50px 50px;
   border-radius: 8px;
@@ -125,6 +129,10 @@
   align-items: center;
   justify-content: space-around;
   margin: 4px 0px;
+}
+
+.cardSM.night {
+  background-color: #206583;
 }
 
 .cardSM h1 {

@@ -4,11 +4,11 @@ import cogIcon from '../../../assets/cog-solid.svg';
 
 import styles from './index.module.css';
 import gStyels from '../index.module.css';
-export default ({ handleClick, handleUnits, handleOnlyOneLocation, unit, onlyOneLocation, show }) => {
+export default ({ handleClick, handleUnits, handleOnlyOneLocation, unit, onlyOneLocation, show, themes }) => {
   return (
-    <div className={gStyels.cyrcle} onClick={() => handleClick(3)}>
+    <div className={`${gStyels.cyrcle} ${themes[0] ? gStyels.night : ''}`} onClick={() => handleClick(3)}>
       <img src={cogIcon} className={gStyels.floatbuttonsImage} onClick={() => handleClick(3)} />
-      <div className={`${gStyels.bubble} ${show === 3 ? gStyels.showBubble : ''} ${gStyels.thirdBuble}`}>
+      <div className={`${gStyels.bubble} ${themes[0] ? gStyels.night : ''} ${show === 3 ? gStyels.showBubble : ''}  ${gStyels.thirdBuble}`}>
         <p className={styles.radioItem}>Units:</p>
         <p className={styles.radioItem}>
           <input

@@ -9,7 +9,7 @@
   border-radius: 10px;
   padding: 10px;
   background: -webkit-radial-gradient(white 0px, transparent 1px), -webkit-radial-gradient(white 0px, transparent 1px),
-    -webkit-radial-gradient(white 0px, transparent 1px), #206583;
+    -webkit-radial-gradient(white 0px, transparent 1px), #40a8c2;
   background-position: 5px 5px, 32px 81px;
   background-size: 50px 50px;
 }
@@ -21,6 +21,10 @@
   align-items: center;
   padding: 32px;
   animation: slide 1s cubic-bezier(0.68, 0, 0.63, 0.62);
+}
+
+.modal.show.night {
+  background-color: #206583;
 }
 
 .modal.hide {

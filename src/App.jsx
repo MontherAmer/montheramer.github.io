@@ -11,8 +11,7 @@ import Modal from './components/Modal';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { weathers } = useSelector(state => state.mainState);
-  const { unit } = useSelector(state => state.mainState);
+  const { weathers, unit, themes } = useSelector(state => state.mainState);
   const { isMapShown, isLoading } = useSelector(state => state.utilsState);
 
   useEffect(() => {
@@ -29,7 +28,7 @@ const App = () => {
     <div className='App'>
       <FloatButtons />
 
-      {weathers?.length === 1 ? <Main /> : <MultiWeather weathers={weathers} />}
+      {weathers?.length === 1 ? <Main /> : <MultiWeather weathers={weathers} themes={themes} />}
 
       {isLoading ? <Loader /> : null}
       {isMapShown ? <Modal show={isMapShown} /> : null}

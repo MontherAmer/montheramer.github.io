@@ -6,7 +6,7 @@ import Image from '../Image';
 
 import styles from './index.module.css';
 export default () => {
-  const { weathers, unit } = useSelector(state => state.mainState);
+  const { weathers, unit, themes } = useSelector(state => state.mainState);
 
   const deg = unit === 'metric' ? <span>&#8451;</span> : <span>&#8457;</span>;
   const data = weathers[0];
@@ -15,7 +15,7 @@ export default () => {
       {data?.map((item, i) =>
         i === 0 ? (
           <div className={styles.section} key={i}>
-            <div className={styles.cardBG}>
+            <div className={`${styles.cardBG} ${themes[0] ? styles.night : ''}`}>
               <div className={styles.cardBGHeader}>{item.city || 'Unknown Place'}</div>
               <div className={styles.cardBGBody}>
                 <div className={styles.cardBGFirst}>
@@ -48,7 +48,7 @@ export default () => {
           </div>
         ) : i % 2 !== 0 ? (
           <div className={styles.section} key={i}>
-            <div className={styles.cardSM}>
+            <div className={`${styles.cardSM} ${themes[0] ? styles.night : ''}`}>
               <h1>{item.day.toUpperCase()}</h1>
               <div className={styles.tempContainer}>
                 <h2>
@@ -62,7 +62,7 @@ export default () => {
               </div>
               <Image value={item.icon} height='40px' />
             </div>
-            <div className={styles.cardSM}>
+            <div className={`${styles.cardSM} ${themes[0] ? styles.night : ''}`}>
               <h1>{data[i + 1].day.toUpperCase()}</h1>
               <div className={styles.tempContainer}>
                 <h2>

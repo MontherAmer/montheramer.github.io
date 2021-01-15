@@ -37,6 +37,9 @@ export const getForecastData = ({ unit, lon, lat, name }) => async dispatch => {
       'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_KEY
     }
   });
+  console.log('this is the time data ', timeData.data.data.time_now);
+  console.log('this is the sunrise ', weatherData.data.list[0].sunrise);
+  console.log('this is the sunset ', weatherData.data.list[0].sunset);
   let formatedData = await formateWeatherData({ ...weatherData.data, time: timeData.data.data.time_now });
   return dispatch({ type: mainActionsTypes.ADD_NEW_WEATHER_ITEM, payload: [formatedData] });
 };

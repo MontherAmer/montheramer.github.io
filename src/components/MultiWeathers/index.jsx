@@ -8,20 +8,18 @@ import Image from '../Image';
 import windIcon from '../../assets/icons/wind.png';
 import closeIcon from '../../assets/close.svg';
 
-export default ({ weathers }) => {
+export default ({ weathers, themes }) => {
   const dispatch = useDispatch();
 
-  const handleRemove = i => {
-    console.log('ddddddddd ', i);
-    dispatch(removeWeatherCol(i));
-  };
+  const handleRemove = i => dispatch(removeWeatherCol(i));
+
   return (
     <div className={styles.wrapper}>
       {weathers.map((data, j) => (
         <div className={styles.container} key={j}>
           {data?.map((item, i) =>
             i === 0 ? (
-              <div className={styles.cardBG} key={i}>
+              <div className={`${styles.cardBG} ${themes[j] ? styles.night : ''}`} key={i}>
                 <div className={styles.cardBGHeader}>
                   {item.city || 'Unknown Place'}
                   <img src={closeIcon} className={styles.closeImage} onClick={() => handleRemove(j)} />
@@ -49,7 +47,7 @@ export default ({ weathers }) => {
                 </div>
               </div>
             ) : (
-              <div className={styles.cardSM} key={i}>
+              <div className={`${styles.cardSM} ${themes[j] ? styles.night : ''}`} key={i}>
                 <h1>{item.day.toUpperCase()}</h1>
                 <div className={styles.tempContainer}>
                   <h2>{item.dayTemp}&#8451;</h2>
