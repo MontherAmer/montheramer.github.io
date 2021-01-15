@@ -10,7 +10,7 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case mainActionsTypes.ADD_NEW_WEATHER_ITEM:
-      return { ...state, weathers: state.weathers.concat(payload) };
+      return state.onlyOneLocation ? { ...state, weathers: payload } : { ...state, weathers: state.weathers.concat(payload) };
     case mainActionsTypes.REMOVE_WEATHER_ITEM:
       let newWeathers = state.weathers;
       newWeathers.splice(payload, 1);
