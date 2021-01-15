@@ -4,7 +4,7 @@ import { updateUnitHelper } from '../../utils';
 const initialState = {
   weathers: [],
   unit: 'metric',
-  onlyOneLocation: true
+  onlyOneLocation: false
 };
 
 export default (state = initialState, { type, payload }) => {
