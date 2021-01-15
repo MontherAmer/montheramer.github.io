@@ -160,3 +160,9 @@
   height: 20px;
   cursor: pointer;
 }
+
+@media (max-width: 425px) {
+  .wrapper {
+    margin-top: 20px;
+  }
+}

@@ -4,7 +4,7 @@ import { updateUnitHelper, handleThemes } from '../../utils';
 const initialState = {
   weathers: [],
   unit: 'metric',
-  onlyOneLocation: false,
+  onlyOneLocation: true,
   themes: []
 };
 

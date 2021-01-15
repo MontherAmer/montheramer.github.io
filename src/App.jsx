@@ -23,12 +23,12 @@ const App = () => {
   }, [dispatch]);
 
   if (!weathers?.length) return <Loader />;
-
+  console.log('SSSSSSSSSSSS ', window.innerWidth);
   return (
     <div className='App'>
       <FloatButtons />
 
-      {weathers?.length === 1 ? <Main /> : <MultiWeather weathers={weathers} themes={themes} />}
+      {weathers?.length === 1 && window.innerWidth > 425 ? <Main /> : <MultiWeather weathers={weathers} themes={themes} />}
 
       {isLoading ? <Loader /> : null}
       {isMapShown ? <Modal show={isMapShown} /> : null}
