@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getDefaltLocation, getForecastData } from './store/actions';
+import { ShowBubleContext } from './context/ShowBubleContext';
 
 import FloatButtons from './components/FloatsButtons';
 import Loader from './components/Loader';
@@ -11,6 +12,7 @@ import Modal from './components/Modal';
 
 const App = () => {
   const dispatch = useDispatch();
+  const { updateShowBuble } = useContext(ShowBubleContext);
   const { weathers, unit, themes } = useSelector(state => state.mainState);
   const { isMapShown, isLoading } = useSelector(state => state.utilsState);
 
@@ -23,9 +25,8 @@ const App = () => {
   }, [dispatch]);
 
   if (!weathers?.length) return <Loader />;
-  console.log('SSSSSSSSSSSS ', window.innerWidth);
   return (
-    <div className='App'>
+    <div className='App' id='off' onClick={updateShowBuble}>
       <FloatButtons />
 
       {weathers?.length === 1 && window.innerWidth > 425 ? <Main /> : <MultiWeather weathers={weathers} themes={themes} />}

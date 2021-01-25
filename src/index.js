@@ -5,6 +5,9 @@ import configureStore from './store';
 import dotenv from 'dotenv';
 import './index.css';
 import App from './App';
+
+import ShowBubleContext from './context/ShowBubleContext';
+
 dotenv.config();
 
 export const { store, persistor } = configureStore();
@@ -12,7 +15,9 @@ export const { store, persistor } = configureStore();
 const render = Component => {
   return ReactDOM.render(
     <Provider store={store}>
-      <Component />
+      <ShowBubleContext>
+        <Component />
+      </ShowBubleContext>
     </Provider>,
     document.getElementById('root')
   );
