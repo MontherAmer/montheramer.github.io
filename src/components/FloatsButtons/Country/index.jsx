@@ -10,7 +10,7 @@ export default ({ handleClick, themes, show, handleNewPlace }) => {
 
   const handleCountryChange = e => {
     let countires = searchCountries(e.target.value, 'code name');
-    let countryList = countires.splice(0, 5);
+    let countryList = countires.splice(0, 4);
     setState({ ...state, countryList, showCities: false, countryName: e.target.value, showCountry: countryList.length ? true : false });
   };
 
