@@ -26,7 +26,7 @@ export default ({ handleUnits, handleOnlyOneLocation, unit, onlyOneLocation, the
             type='radio'
             id='units_bubble'
             name='radio-group'
-            checked={unit === 'metric' ? true : false}
+            defaultChecked={unit === 'metric' ? true : false}
           />
           <label id='units_bubble' onClick={() => handleUnits('metric')}>
             Metric
@@ -37,7 +37,7 @@ export default ({ handleUnits, handleOnlyOneLocation, unit, onlyOneLocation, the
             className={styles.radioButton}
             type='radio'
             id='units_bubble'
-            checked={unit === 'imperial' ? true : false}
+            defaultChecked={unit === 'imperial' ? true : false}
             name='radio-group'
           />
           <label id='units_bubble' onClick={() => handleUnits('imperial')}>
@@ -46,7 +46,7 @@ export default ({ handleUnits, handleOnlyOneLocation, unit, onlyOneLocation, the
         </p>
         <hr />
         <p id='units_bubble' className={styles.radioItem}>
-          <input id='units_bubble' className={styles.checkButton} type='checkbox' checked={!!onlyOneLocation} name='radio-group' />
+          <input id='units_bubble' className={styles.checkButton} type='checkbox' defaultChecked={!!onlyOneLocation} name='radio-group' />
           <label id='units_bubble' onClick={handleOnlyOneLocation}>
             Only One Location?
           </label>

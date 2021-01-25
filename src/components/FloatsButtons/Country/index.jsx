@@ -19,7 +19,6 @@ export default ({ themes, handleNewPlace }) => {
 
   const handleCountryClick = e => {
     let allCities = listCities(e.code);
-    console.log(allCities);
     setState({
       ...state,
       showCountry: false,
@@ -32,7 +31,6 @@ export default ({ themes, handleNewPlace }) => {
   };
 
   const handleCityChange = e => {
-    console.log('allCities ', state.allCities);
     let citiesList = [];
     state.allCities.map(item => {
       let t = new RegExp(`${e.target.value.toLowerCase()}`).test(item.toLowerCase());

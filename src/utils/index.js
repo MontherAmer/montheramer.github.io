@@ -42,14 +42,9 @@ const convertMeterperSecToKmPerHour = number => {
 };
 
 const getDayOrNight = ({ time, sunRise, sunSet }) => {
-  console.log('sunRisesunRise ', sunRise.getHours());
-  console.log('sunSetsunSet ', sunSet.getHours());
   let timeValue = time.getHours() * 60 + time.getMinutes();
   let sunRiseValue = sunRise.getHours() * 60 + sunRise.getMinutes();
   let sunSetValue = sunSet.getHours() * 60 + sunSet.getMinutes();
-  console.log('timeValue=== ', timeValue);
-  console.log('sunRiseValue=== ', sunRiseValue);
-  console.log('sunSetValue=== ', sunSetValue);
   return timeValue > sunRiseValue && timeValue < sunSetValue ? 'day' : 'night';
 };
 
