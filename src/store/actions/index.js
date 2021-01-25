@@ -24,13 +24,18 @@ export const getDefaltLocation = async () => {
 
 export const getForecastData = ({ unit, lon, lat, name }) => async dispatch => {
   let weatherData = await Axios.get(
-    `${process.env.REACT_APP_WEATHER_MAIN_URL}/daily?${!name ? 'lat=' + lat + '&lon=' + lon : ''}&cnt=7&units=${unit ? unit : 'metric'}`,
+    `${process.env.REACT_APP_WEATHER_MAIN_URL}/daily?${!name ? 'lat=' + lat + '&lon=' + lon : 'q=' + name}&cnt=7&units=${
+      unit ? unit : 'metric'
+    }`,
     {
       headers: {
         'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_KEY
       }
     }
   );
+  console.log('weatherDataweatherData ', weatherData);
+  lat = lat ? lat : weatherData.data.city.coord.lat;
+  lon = lon ? lon : weatherData.data.city.coord.lon;
 
   let timeData = await Axios.get(`${process.env.REACT_APP_RAPIDAPI_TIME_URL}?location=${lat}, ${lon}`, {
     headers: {
