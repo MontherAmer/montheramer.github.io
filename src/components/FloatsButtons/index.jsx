@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { showLoader, hideLoader } from '../../store/actions';
 import { showMap, updateUnit, getForecastData, updateOnlyOneLocation } from '../../store/actions';
-
-import mapIcon from '../../assets/map-marked-solid.svg';
 
 import Units from './Units';
 import Countries from './Country';
+import mapIcon from '../../assets/map-marked-solid.svg';
 
 import styles from './index.module.css';
 export default () => {
@@ -26,7 +26,11 @@ export default () => {
   const handleOnlyOneLocation = e => {
     dispatch(updateOnlyOneLocation());
   };
-  const handleNewPlace = data => dispatch(getForecastData({ unit, name: data }));
+  const handleNewPlace = async data => {
+    dispatch(showLoader());
+    await dispatch(getForecastData({ unit, name: data }));
+    dispatch(hideLoader());
+  };
 
   return (
     <div className={styles.floatbuttons}>

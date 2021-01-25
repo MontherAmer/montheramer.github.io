@@ -41,10 +41,8 @@ export default ({ themes, handleNewPlace }) => {
 
   const handleCityClick = e => {
     setState({ ...state, cityName: e, citiesList: [] });
-    updateShowBuble();
     handleNewPlace(`${e},${state.countryCode}`);
   };
-
   return (
     <div id='country_bubble' className={`${gStyels.cyrcle} ${themes[0] ? gStyels.night : ''}`}>
       <img src={cityIcon} className={gStyels.floatbuttonsImage} id='country_bubble' onClick={updateShowBuble} />
@@ -79,7 +77,7 @@ export default ({ themes, handleNewPlace }) => {
             {state?.citiesList?.length && state.showCities ? (
               <div id='country_bubble' className={styles.list}>
                 {state.citiesList.map((item, i) => (
-                  <div id='country_bubble' className={styles.list_item} key={i} onClick={() => handleCityClick(item)}>
+                  <div className={styles.list_item} key={i} onClick={() => handleCityClick(item)}>
                     {item}
                   </div>
                 ))}
