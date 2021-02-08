@@ -29,7 +29,7 @@ const App = () => {
     <div className='App' id='off' onClick={updateShowBuble}>
       <FloatButtons />
 
-      {weathers?.length === 1 && window.innerWidth > 425 ? <Main /> : <MultiWeather weathers={weathers} themes={themes} />}
+      {weathers?.length === 1 && window.innerWidth > 425 ? <Main /> : <MultiWeather weathers={weathers} unit={unit} themes={themes} />}
 
       {isLoading ? <Loader /> : null}
       {isMapShown ? <Modal show={isMapShown} /> : null}

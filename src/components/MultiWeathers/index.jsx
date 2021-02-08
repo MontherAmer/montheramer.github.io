@@ -8,11 +8,12 @@ import Image from '../Image';
 import windIcon from '../../assets/icons/wind.png';
 import closeIcon from '../../assets/close.svg';
 
-export default ({ weathers, themes }) => {
+export default ({ weathers, unit, themes }) => {
   const dispatch = useDispatch();
 
   const handleRemove = i => dispatch(removeWeatherCol(i));
 
+  const deg = unit === 'metric' ? <span>&#8451;</span> : <span>&#8457;</span>;
   return (
     <div className={styles.wrapper}>
       {weathers.map((data, j) => (
@@ -29,8 +30,14 @@ export default ({ weathers, themes }) => {
                     <div className={styles.cardBGRight}>
                       <p>{item.day.toUpperCase()}</p>
                       <div className={styles.tempContainer}>
-                        <p>{item.dayTemp}&#8451;</p>
-                        <p>{item.nightTemp}&#8451;</p>
+                        <p>
+                          {item.dayTemp}
+                          {deg}
+                        </p>
+                        <p>
+                          {item.nightTemp}
+                          {deg}
+                        </p>
                       </div>
                     </div>
                     <div className={styles.cardBGRight}>
@@ -50,8 +57,14 @@ export default ({ weathers, themes }) => {
               <div className={`${styles.cardSM} ${themes[j] ? styles.night : ''}`} key={i}>
                 <h1>{item.day.toUpperCase()}</h1>
                 <div className={styles.tempContainer}>
-                  <h2>{item.dayTemp}&#8451;</h2>
-                  <h3>{item.nightTemp}&#8451;</h3>
+                  <h2>
+                    {item.dayTemp}
+                    {deg}
+                  </h2>
+                  <h3>
+                    {item.nightTemp}
+                    {deg}
+                  </h3>
                 </div>
                 <Image value={item.icon} height='40px' />
               </div>
